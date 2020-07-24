@@ -3,6 +3,8 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyTest {
@@ -42,6 +44,16 @@ class ParkingBoyTest {
      * when: parking boy parking car
      * then: return 2 ticket
      */
+    @Test
+    public void should_return_2_tickets_when_parking_given_2_cars() {
+        LinkedList<Car> cars = new LinkedList<>();
+        for (int index = 0; index < 2; index++) {
+            cars.add(new Car());
+        }
+        ParkingBoy parkingBoy = new ParkingBoy();
+        LinkedList<Ticket> tickets = parkingBoy.park(cars);
+        Assertions.assertEquals(2, tickets.size());
+    }
 
 
     /**
