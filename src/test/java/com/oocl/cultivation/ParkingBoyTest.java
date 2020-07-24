@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ParkingBoyTest {
 
     /**
-     * given: a car, parking boy;
+     * given: a car
      * when: parkingboy parking car
      * then: return a ticket
      */
@@ -62,12 +62,23 @@ class ParkingBoyTest {
      * then: return a correspond car
      */
 
+    // already meet requirement
+
+
+
 
     /**
      * given: a wrong ticket
      * when: parking boy fetch car by ticket
      * then: return null and a warning message
      */
+    @Test
+    public void should_return_null_when_parking_given_wrong_ticket() {
+        Ticket wrongTicket = new Ticket();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = parkingBoy.fetchCar(wrongTicket);
+        Assertions.assertEquals(null, car);
+    }
 
 
     /**
