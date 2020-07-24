@@ -11,7 +11,7 @@ class ParkingBoyTest {
 
     /**
      * given: a car
-     * when: parkingboy parking car
+     * when: parking boy parking car
      * then: return a ticket
      */
 
@@ -77,7 +77,7 @@ class ParkingBoyTest {
         Ticket wrongTicket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = parkingBoy.fetchCar(wrongTicket);
-        Assertions.assertEquals(null, car);
+        Assertions.assertEquals(null, car);  //already meet the requirement
     }
 
 
@@ -86,6 +86,16 @@ class ParkingBoyTest {
      * when: parking boy fetch car
      * then: return null and a warning message
      */
+
+    @Test
+    public void should_return_null_when_parking_given_used_ticket() {
+        Car car = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Ticket ticket = parkingBoy.park(car);
+        Car fetchCar = parkingBoy.fetchCar(ticket);
+        Car wrongCar = parkingBoy.fetchCar(ticket);
+        Assertions.assertNull(wrongCar);
+    }
 
 
     /**
