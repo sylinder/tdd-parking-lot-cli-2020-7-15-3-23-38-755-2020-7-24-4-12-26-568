@@ -104,6 +104,15 @@ class ParkingBoyTest {
      * then: return null and a sorry message.
      */
 
+    @ Test
+    public void should_return_null_when_parking_given_car_and_remain_zero_position() {
+        int remainPosition = 0;
+        Car car = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        parkingBoy.setRemainPosition(0);
+        Ticket ticket = parkingBoy.park(car);
+        Assertions.assertNull(ticket);
+    }
 
 
 }
