@@ -24,6 +24,9 @@ public class ParkingBoy {
     }
 
     public Ticket park(Car car) {
+        if (car == null) {
+            return null;
+        }
         if (getRemainPosition() == 0) {
             return null;
         }
