@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class ParkingBoy {
@@ -22,6 +23,18 @@ public class ParkingBoy {
         }
         return null;
     }
+
+    public LinkedList<Ticket> park(LinkedList<Car> cars) {
+        LinkedList<Ticket> returnTickets = new LinkedList<>();
+        for (Car car : cars) {
+            Ticket ticket = new Ticket();
+            carToTicket.put(car, ticket);
+            ticketToCar.put(ticket, car);
+            returnTickets.add(ticket);
+        }
+        return returnTickets;
+    }
+
 
     public Car fetchCar(Ticket ticket) {
         if (!ticketToCar.containsKey(ticket)) {
