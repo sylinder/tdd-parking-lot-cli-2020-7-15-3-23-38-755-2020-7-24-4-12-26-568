@@ -41,6 +41,9 @@ public class ParkingBoy {
             System.out.println("Wrong ticket");
             return null;
         }
-        return ticketToCar.get(ticket);
+        Car car = ticketToCar.get(ticket);
+        ticketToCar.remove(ticket);
+        carToTicket.remove(car);
+        return car;
     }
 }
