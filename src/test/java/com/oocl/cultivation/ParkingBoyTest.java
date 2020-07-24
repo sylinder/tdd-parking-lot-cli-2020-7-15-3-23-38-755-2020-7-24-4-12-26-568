@@ -15,4 +15,19 @@ class ParkingBoyTest {
         Assertions.assertNotNull(ticket);
     }
 
+
+    /**
+     * given: ticket
+     * when: parking
+     * then: return a car
+     */
+
+    @Test
+    public void should_return_car_when_parking_given_ticket() {
+        Ticket ticket = new Ticket();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = parkingBoy.fetchCar(ticket);
+        Assertions.assertNotNull(car);
+    }
+
 }
