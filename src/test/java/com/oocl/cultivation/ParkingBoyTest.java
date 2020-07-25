@@ -143,9 +143,12 @@ class ParkingBoyTest {
 
     @Test
     public void should_return_unrecognized_ticket_when_parking_given_wrong_ticket() {
-        Ticket ticket = null;
+        Ticket ticket = new Ticket();
         ParkingBoy parkingBoy = new ParkingBoy();
+        Customer customer = new Customer();
         Car car = parkingBoy.fetchCar(ticket);
-        Assertions.assertEquals("Unrecognized parking ticket", car);
+        Assertions.assertNull(car);
+        String response = customer.queryForErrorMessage(ticket);
+        Assertions.assertEquals("Unrecognized parking ticket", response);
     }
 }
