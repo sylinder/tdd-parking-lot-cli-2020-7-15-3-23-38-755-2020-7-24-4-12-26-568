@@ -5,6 +5,16 @@ public class Car {
 
     private int id;
 
+    private String returningMessage;
+
+    public void setReturningMessage(String returningMessage) {
+        this.returningMessage = returningMessage;
+    }
+
+    public String getReturningMessage() {
+        return returningMessage;
+    }
+
     public Car() {
         this.id = increaseNumber++;
     }

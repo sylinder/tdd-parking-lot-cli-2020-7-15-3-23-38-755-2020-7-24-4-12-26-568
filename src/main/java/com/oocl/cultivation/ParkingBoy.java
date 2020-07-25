@@ -51,15 +51,41 @@ public class ParkingBoy {
     }
 
 
-    
+
     public Car fetchCar(Ticket ticket) {
-        if (!ticketToCar.containsKey(ticket)) {
-            System.out.println("Wrong ticket");
+        if (ticket == null || !ticketToCar.containsKey(ticket)) {
             return null;
         }
         Car car = ticketToCar.get(ticket);
         ticketToCar.remove(ticket);
         carToTicket.remove(car);
         return car;
+    }
+
+
+    public String response(Ticket ticket) {
+        if (ticket == null || !ticketToCar.containsKey(ticket)) {
+            return "Unrecognized parking ticket";
+        }
+        return null;
+    }
+
+//    public String fetch(Ticket ticket) {
+//        String unrecognizedMessage = "Unrecognized parking ticket";
+//        if (!isCorrectTicket(ticket)) {
+//            return unrecognizedMessage;
+//        }
+//        return null;
+//    }
+
+
+    public boolean isCorrectTicket(Ticket ticket) {
+        if (ticket == null) {
+            return false;
+        }
+        if (!ticketToCar.containsKey(ticket)) {
+            return false;
+        }
+        return true;
     }
 }
