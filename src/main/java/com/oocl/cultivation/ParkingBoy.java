@@ -41,6 +41,14 @@ public class ParkingBoy {
             Ticket ticket = new Ticket();
             carToTicket.put(car, ticket);
             ticketToCar.put(ticket, car);
+            if (parkingLots != null) {
+                for (int index = 0; index < parkingLots.size(); index++) {
+                    if (parkingLots.get(index).getRemainPosition() >= 1) {
+                        parkingLots.get(index).decreasePostion();
+                        break;
+                    }
+                }
+            }
             return ticket;
         }
         return null;

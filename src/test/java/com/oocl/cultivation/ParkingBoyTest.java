@@ -198,13 +198,13 @@ class ParkingBoyTest {
     @Test
     public void should_return_one_full_another_empty_when_parking_given_two_parking_lots() {
         LinkedList<ParkingLot> parkingLots = new LinkedList<ParkingLot>();
-        parkingLots.add(new ParkingLot(10));
-        parkingLots.add(new ParkingLot(10));
+        parkingLots.add(new ParkingLot());
+        parkingLots.add(new ParkingLot());
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         for (int index = 0; index < 10; index++) {
             parkingBoy.park(new Car());
         }
         Assertions.assertEquals(0, parkingLots.get(0).getRemainPosition());
-        Assertions.assertEquals(10, parkingLots.get(0).getRemainPosition());
+        Assertions.assertEquals(10, parkingLots.get(1).getRemainPosition());
     }
 }
