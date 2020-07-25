@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class ParkingBoy {
+    private LinkedList<ParkingLot> parkingLots;
     private int remainPosition;
     private Map<Car, Ticket> carToTicket;
     private Map<Ticket, Car> ticketToCar;
@@ -15,6 +16,11 @@ public class ParkingBoy {
         this.ticketToCar = new HashMap<>();
     }
 
+    public ParkingBoy(LinkedList<ParkingLot> parkingLots) {
+        this();
+        this.parkingLots = parkingLots;
+    }
+
     public void setRemainPosition(int remainPosition) {
         this.remainPosition = remainPosition;
     }
@@ -23,6 +29,7 @@ public class ParkingBoy {
         return remainPosition;
     }
 
+    //this method can be refactor into park(LinkedList<Car> car), but will affect lots of test case.
     public Ticket park(Car car) {
         if (car == null) {
             return null;
@@ -86,13 +93,13 @@ public class ParkingBoy {
 //    }
 
 
-    public boolean isCorrectTicket(Ticket ticket) {
-        if (ticket == null) {
-            return false;
-        }
-        if (!ticketToCar.containsKey(ticket)) {
-            return false;
-        }
-        return true;
-    }
+//    public boolean isCorrectTicket(Ticket ticket) {
+//        if (ticket == null) {
+//            return false;
+//        }
+//        if (!ticketToCar.containsKey(ticket)) {
+//            return false;
+//        }
+//        return true;
+//    }
 }

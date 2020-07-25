@@ -148,7 +148,7 @@ class ParkingBoyTest {
         Customer customer = new Customer();
         Car car = parkingBoy.fetchCar(ticket);
         Assertions.assertNull(car);
-        String response = customer.queryForErrorMessage(ticket);
+        String response = customer.queryForErrorMessage(ticket, parkingBoy);
         Assertions.assertEquals("Unrecognized parking ticket", response);
     }
 
@@ -164,7 +164,7 @@ class ParkingBoyTest {
         Customer customer = new Customer();
         Car car = parkingBoy.fetchCar(ticket);
         Assertions.assertNull(car);
-        String errorMessage = customer.queryForErrorMessage(ticket);
+        String errorMessage = customer.queryForErrorMessage(ticket, parkingBoy);
         Assertions.assertEquals("Please provide your parking ticket.", errorMessage);
     }
 
@@ -182,7 +182,29 @@ class ParkingBoyTest {
         parkingBoy.setRemainPosition(0);
         Ticket ticket = parkingBoy.park(car);
         Assertions.assertNull(ticket);
-        String errorMessage = new Customer().queryForErrorMessage(ticket);
+        String errorMessage = new Customer().queryForErrorMessage(ticket, parkingBoy);
         Assertions.assertEquals("Not enough position.", errorMessage);
+    }
+
+
+    //==============Story 3================
+
+    /**
+     * given: 2 parking lots
+     * when: parking boy parking car
+     * then: return one parking lot is full is another is empty
+     */
+
+    @Test
+    public void should_return_one_full_another_empty_when_parking_given_two_parking_lots() {
+        LinkedList<ParkingLot> parkingLots = new LinkedList<ParkingLot>();
+        parkingLots.add(new ParkingLot(10));
+        parkingLots.add(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        for (int index = 0; index < 10; index++) {
+            parkingBoy.park(new Car());
+        }
+        Assertions.assertEquals(0, parkingLots.get(0).getRemainPosition());
+        Assertions.assertEquals(10, parkingLots.get(0).getRemainPosition());
     }
 }
