@@ -108,8 +108,8 @@ class ParkingBoyTest {
     public void should_return_null_when_parking_given_car_and_remain_zero_position() {
         int remainPosition = 0;
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy();
-        parkingBoy.setRemainPosition(0);
+        ParkingBoy parkingBoy = new ParkingBoy(new LinkedList<>());
+//        parkingBoy.setRemainPosition(0);
         Ticket ticket = parkingBoy.park(car);
         Assertions.assertNull(ticket);
     }
@@ -178,8 +178,8 @@ class ParkingBoyTest {
     public void should_return_not_enough_position_when_paring_given_zero_position() {
         int remainPosition = 0;
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy();
-        parkingBoy.setRemainPosition(0);
+        ParkingBoy parkingBoy = new ParkingBoy(new LinkedList<>());
+//        parkingBoy.setRemainPosition(0);
         Ticket ticket = parkingBoy.park(car);
         Assertions.assertNull(ticket);
         String errorMessage = new Customer().queryForErrorMessage(ticket, parkingBoy);

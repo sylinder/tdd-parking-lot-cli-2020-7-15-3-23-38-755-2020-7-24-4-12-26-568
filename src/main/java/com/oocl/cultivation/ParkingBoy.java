@@ -6,14 +6,16 @@ import java.util.Map;
 
 public class ParkingBoy {
     private LinkedList<ParkingLot> parkingLots;
-    private int remainPosition;
+//    private int remainPosition;
     private Map<Car, Ticket> carToTicket;
     private Map<Ticket, Car> ticketToCar;
 
     public ParkingBoy() {
-        remainPosition = 10;
+//        remainPosition = 10;
         this.carToTicket = new HashMap<>();
         this.ticketToCar = new HashMap<>();
+        this.parkingLots = new LinkedList<>();
+        parkingLots.add(new ParkingLot());
     }
 
     public ParkingBoy(LinkedList<ParkingLot> parkingLots) {
@@ -21,22 +23,28 @@ public class ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    public void setRemainPosition(int remainPosition) {
-        this.remainPosition = remainPosition;
-    }
 
-    public int getRemainPosition() {
-        return remainPosition;
-    }
+    //    public void setRemainPosition(int remainPosition) {
+//        this.remainPosition = remainPosition;
+//    }
+
+//    public int getRemainPosition() {
+//        return remainPosition;
+//    }
 
     //this method can be refactor into park(LinkedList<Car> car), but will affect lots of test case.
     public Ticket park(Car car) {
         if (car == null) {
             return null;
         }
-        if (getRemainPosition() == 0) {
-            return null;
+//        if (getRemainPosition() == 0) {
+//            return null;
+//        }
+        int totalRemainPosition = getTotalRemainPosition();
+        if (totalRemainPosition == 0) {
+            return  null;
         }
+
         if (!carToTicket.containsKey(car)) {
             Ticket ticket = new Ticket();
             carToTicket.put(car, ticket);
@@ -52,6 +60,16 @@ public class ParkingBoy {
             return ticket;
         }
         return null;
+    }
+
+    public int getTotalRemainPosition() {
+        int totalRemainPosition = 0;
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.getRemainPosition() > 0) {
+                totalRemainPosition += parkingLot.getRemainPosition();
+            }
+        }
+        return totalRemainPosition;
     }
 
     public LinkedList<Ticket> park(LinkedList<Car> cars) {
@@ -79,7 +97,7 @@ public class ParkingBoy {
 
 
     public String response(Ticket ticket) {
-        if (ticket == null && getRemainPosition() == 0) {
+        if (ticket == null && getTotalRemainPosition() == 0) {
             return "Not enough position.";
         }
 
