@@ -151,4 +151,20 @@ class ParkingBoyTest {
         String response = customer.queryForErrorMessage(ticket);
         Assertions.assertEquals("Unrecognized parking ticket", response);
     }
+
+    /**
+     * given: customer provide null ticket
+     * when: parking boy parking car
+     * then: return error message notify provide ticket
+     */
+    @Test
+    public void should_return_notify_message_when_parking_given_null_ticket() {
+        Ticket ticket = null;
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Customer customer = new Customer();
+        Car car = parkingBoy.fetchCar(ticket);
+        Assertions.assertNull(car);
+        String errorMessage = customer.queryForErrorMessage(ticket);
+        Assertions.assertEquals("Please provide your parking ticket.", errorMessage);
+    }
 }
