@@ -167,4 +167,22 @@ class ParkingBoyTest {
         String errorMessage = customer.queryForErrorMessage(ticket);
         Assertions.assertEquals("Please provide your parking ticket.", errorMessage);
     }
+
+    /**
+     * given: zero position
+     * when: parking boy parking car
+     * then: return error message not enough position
+     */
+
+    @Test
+    public void should_return_not_enough_position_when_paring_given_zero_position() {
+        int remainPosition = 0;
+        Car car = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        parkingBoy.setRemainPosition(0);
+        Ticket ticket = parkingBoy.park(car);
+        Assertions.assertNull(ticket);
+        String errorMessage = new Customer().queryForErrorMessage(ticket);
+        Assertions.assertEquals("Not enough position.", errorMessage);
+    }
 }
