@@ -64,7 +64,10 @@ public class ParkingBoy {
 
 
     public String response(Ticket ticket) {
-        if (ticket == null || !ticketToCar.containsKey(ticket)) {
+        if (ticket == null) {
+            return "Please provide your parking ticket.";
+        }
+        if (!ticketToCar.containsKey(ticket)) {
             return "Unrecognized parking ticket";
         }
         return null;
