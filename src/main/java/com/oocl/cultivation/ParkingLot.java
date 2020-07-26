@@ -12,6 +12,10 @@ public class ParkingLot {
         return remainPosition;
     }
 
+    public void setRemainPosition(int remainPosition) {
+        this.remainPosition = remainPosition;
+    }
+
     public void decreasePostion() {
         this.remainPosition--;
     }

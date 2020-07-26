@@ -209,4 +209,29 @@ class ParkingBoyTest {
         Assertions.assertEquals(0, parkingLots.get(0).getRemainPosition());
         Assertions.assertEquals(10, parkingLots.get(1).getRemainPosition());
     }
+
+
+
+    //===============Story 4===================
+
+    /**
+     * given: 2 parking lot with different empty position
+     * when: smart parking boy parking car
+     * then: return park car to the parking car with more empty position
+     */
+
+    @Test
+    public void should_return_decrease_position_with_more_empty_position_parkingLot_when_parking_given_two_different_empty_position() {
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        firstParkingLot.setRemainPosition(3);
+        secondParkingLot.setRemainPosition(7);
+        LinkedList<ParkingLot> parkingLots = new LinkedList<>();
+        parkingLots.add(firstParkingLot);
+        parkingLots.add(secondParkingLot);
+        ParkingBoy smartParkingBoy = new ParkingBoy(parkingLots);
+        smartParkingBoy.park(new Car());
+        Assertions.assertEquals(3, firstParkingLot.getRemainPosition());
+        Assertions.assertEquals(6, secondParkingLot.getRemainPosition());
+    }
 }
