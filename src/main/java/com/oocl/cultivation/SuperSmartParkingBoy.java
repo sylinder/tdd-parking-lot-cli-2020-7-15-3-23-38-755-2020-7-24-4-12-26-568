@@ -33,17 +33,6 @@ public class SuperSmartParkingBoy extends ParkingBoy{
         return null;
     }
 
-//    public int getParkingLotWithMostEmptyPosition(LinkedList<ParkingLot> parkingLots) {
-//        int position = -1;
-//        int maxEmptyPosition = 0;
-//        for (int index = 0; index < parkingLots.size(); index++) {
-//            if (parkingLots.get(index).getRemainPosition() > maxEmptyPosition) {
-//                maxEmptyPosition = parkingLots.get(index).getRemainPosition();
-//                position = index;
-//            }
-//        }
-//        return position;
-//    }
 
     public int getParkingLotWithMostAvailablePosition(LinkedList<ParkingLot> parkingLots) {
         int position = -1;
