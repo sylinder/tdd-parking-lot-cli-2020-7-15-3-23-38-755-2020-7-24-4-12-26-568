@@ -6,13 +6,9 @@ import java.util.Map;
 
 public class ParkingBoy {
     private LinkedList<ParkingLot> parkingLots;
-//    private int remainPosition;
-    private Map<Car, Ticket> carToTicket;
     private Map<Ticket, Car> ticketToCar;
 
     public ParkingBoy() {
-//        remainPosition = 10;
-        this.carToTicket = new HashMap<>();
         this.ticketToCar = new HashMap<>();
         this.parkingLots = new LinkedList<>();
         parkingLots.add(new ParkingLot());
@@ -24,30 +20,20 @@ public class ParkingBoy {
     }
 
 
-    //    public void setRemainPosition(int remainPosition) {
-//        this.remainPosition = remainPosition;
-//    }
-
-//    public int getRemainPosition() {
-//        return remainPosition;
-//    }
-
     //this method can be refactor into park(LinkedList<Car> car), but will affect lots of test case.
     public Ticket park(Car car) {
         if (car == null) {
             return null;
         }
-//        if (getRemainPosition() == 0) {
-//            return null;
-//        }
+
         int totalRemainPosition = getTotalRemainPosition();
         if (totalRemainPosition == 0) {
             return  null;
         }
 
-        if (!carToTicket.containsKey(car)) {
+//        if (!carToTicket.containsKey(car)) {
+        if (!ticketToCar.containsValue(car)) { //containsValue效率貌似有点低
             Ticket ticket = new Ticket();
-            carToTicket.put(car, ticket);
             ticketToCar.put(ticket, car);
             if (parkingLots != null) {
                 for (int index = 0; index < parkingLots.size(); index++) {
@@ -76,7 +62,6 @@ public class ParkingBoy {
         LinkedList<Ticket> returnTickets = new LinkedList<>();
         for (Car car : cars) {
             Ticket ticket = new Ticket();
-            carToTicket.put(car, ticket);
             ticketToCar.put(ticket, car);
             returnTickets.add(ticket);
         }
@@ -91,7 +76,6 @@ public class ParkingBoy {
         }
         Car car = ticketToCar.get(ticket);
         ticketToCar.remove(ticket);
-        carToTicket.remove(car);
         return car;
     }
 
@@ -110,22 +94,4 @@ public class ParkingBoy {
         return null;
     }
 
-//    public String fetch(Ticket ticket) {
-//        String unrecognizedMessage = "Unrecognized parking ticket";
-//        if (!isCorrectTicket(ticket)) {
-//            return unrecognizedMessage;
-//        }
-//        return null;
-//    }
-
-
-//    public boolean isCorrectTicket(Ticket ticket) {
-//        if (ticket == null) {
-//            return false;
-//        }
-//        if (!ticketToCar.containsKey(ticket)) {
-//            return false;
-//        }
-//        return true;
-//    }
 }

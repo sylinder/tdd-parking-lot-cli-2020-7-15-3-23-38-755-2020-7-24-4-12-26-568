@@ -106,7 +106,7 @@ class ParkingBoyTest {
 
     @ Test
     public void should_return_null_when_parking_given_car_and_remain_zero_position() {
-        int remainPosition = 0;
+//        int remainPosition = 0;
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new LinkedList<>());
 //        parkingBoy.setRemainPosition(0);
@@ -140,6 +140,8 @@ class ParkingBoyTest {
         Ticket ticket = parkingBoy.park(car);
         Assertions.assertNull(ticket);
     }
+
+    //==============Story 2=======================
 
     @Test
     public void should_return_unrecognized_ticket_when_parking_given_wrong_ticket() {
@@ -176,7 +178,7 @@ class ParkingBoyTest {
 
     @Test
     public void should_return_not_enough_position_when_paring_given_zero_position() {
-        int remainPosition = 0;
+//        int remainPosition = 0;
         Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new LinkedList<>());
 //        parkingBoy.setRemainPosition(0);
