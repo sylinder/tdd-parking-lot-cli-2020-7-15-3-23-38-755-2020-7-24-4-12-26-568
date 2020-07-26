@@ -234,4 +234,28 @@ class ParkingBoyTest {
         Assertions.assertEquals(3, firstParkingLot.getRemainPosition());
         Assertions.assertEquals(6, secondParkingLot.getRemainPosition());
     }
+
+
+    //===================Story 5=================
+
+    /**
+     * given: two different available position rate parking lots
+     * when: super smart parking boy parking car
+     * then: return: park car to the larger available position rate parking lot.
+     */
+
+    @Test
+    public void should_return_decrease_position_with_larger_rate_when_parking_given_two_diff_available_rate() {
+        ParkingLot firstParkingLot = new ParkingLot(10);
+        ParkingLot secondParkingLot = new ParkingLot(5);
+        firstParkingLot.setRemainPosition(6);
+        secondParkingLot.setRemainPosition(4);
+        LinkedList<ParkingLot> parkingLots = new LinkedList<>();
+        parkingLots.add(firstParkingLot);
+        parkingLots.add(secondParkingLot);
+        ParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+        superSmartParkingBoy.park(new Car());
+        Assertions.assertEquals(6, firstParkingLot.getRemainPosition());
+        Assertions.assertEquals(3, secondParkingLot.getRemainPosition());
+    }
 }
