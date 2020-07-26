@@ -229,7 +229,7 @@ class ParkingBoyTest {
         LinkedList<ParkingLot> parkingLots = new LinkedList<>();
         parkingLots.add(firstParkingLot);
         parkingLots.add(secondParkingLot);
-        ParkingBoy smartParkingBoy = new ParkingBoy(parkingLots);
+        ParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         smartParkingBoy.park(new Car());
         Assertions.assertEquals(3, firstParkingLot.getRemainPosition());
         Assertions.assertEquals(6, secondParkingLot.getRemainPosition());

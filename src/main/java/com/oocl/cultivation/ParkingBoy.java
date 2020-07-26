@@ -19,6 +19,13 @@ public class ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
+    public LinkedList<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
+
+    public Map<Ticket, Car> getTicketToCar() {
+        return ticketToCar;
+    }
 
     //this method can be refactor into park(LinkedList<Car> car), but will affect lots of test case.
     public Ticket park(Car car) {
